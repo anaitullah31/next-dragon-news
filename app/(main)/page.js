@@ -1,4 +1,6 @@
 import Image from "next/image";
+import AllCategories from "../components/AllCategories";
+import RightSideBar from "../components/RightSideBar";
 
 async function getCategories() {
   const res = await fetch(
@@ -15,17 +17,14 @@ export default async function Home() {
     <div className="grid grid-cols-12 gap-4 container mx-auto">
       <div className="col-span-2">
         <h2 className="text-2xl font-semibold">All Categories</h2>
-        <ul className="ml-4 mt-4 flex flex-col gap-2">
-          {news_category.map((category) => (
-            <li className="bg-slate-100 p-2 rounded-md" key={category.category_id}>{category.category_name}</li>
-          ))}
-        </ul>
+        <AllCategories news_category={news_category} />
       </div>
-      <div className="col-span-7">
+      <div className="col-span-8">
         <h2 className="text-2xl font-semibold">All News</h2>
       </div>
-      <div className="col-span-3">
+      <div className="col-span-2">
         <h2 className="text-2xl font-semibold"> Social Icons</h2>
+        <RightSideBar />
       </div>
     </div>
   );
