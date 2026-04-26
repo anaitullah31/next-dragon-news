@@ -14,7 +14,7 @@ export default function Home() {
       .then((res) => res.json())
       .then((data) => setNewsCategory(data.data.news_category));
 
-    fetch("https://openapi.programming-hero.com/api/news/category/02")
+    fetch("https://openapi.programming-hero.com/api/news/category/01")
       .then((res) => res.json())
       .then((data) => setNews(data.data));
   }, []);

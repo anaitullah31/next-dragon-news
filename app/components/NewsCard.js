@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { Bookmark, Share2, Eye, Star } from "lucide-react";
+import Link from "next/link";
 
 export default function NewsCard({ news }) {
   return (
@@ -42,19 +43,20 @@ export default function NewsCard({ news }) {
           alt="News image"
           width={520}
           height={260}
+          priority
           className="mb-6 h-64 w-full rounded-md object-cover"
         />
 
-        <p className="mb-1 text-base leading-7 text-gray-500">
-          Wednesday, August 24, 2022 | Tag Cloud Tags: Biden, EU, Euro, Europe,
-          Joe Biden, Military, News, Russia, Security, UK, Ukraine, United
-          States, Worthy News (Worthy News) – U.S. President Joe Biden has
-          announced nearly $3 billion in new U.S. military a...
+        <p className="mb-1 text-base leading-7 text-gray-500 line-clamp-3">
+          {news.details}
         </p>
 
-        <button className="mb-6 font-semibold text-orange-500">
+        <Link
+          href={`/news/${news._id}`}
+          className="mb-6 font-semibold text-orange-500"
+        >
           Read More
-        </button>
+        </Link>
 
         <hr className="mb-5 border-gray-200" />
 
