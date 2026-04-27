@@ -1,4 +1,5 @@
 "use client";
+import RightSideBar from "@/app/components/RightSideBar";
 import {
   Button,
   Description,
@@ -11,9 +12,16 @@ import {
 import { Icon } from "@iconify/react";
 import { Check } from "lucide-react";
 import Link from "next/link";
+import { useForm } from "react-hook-form";
 const Register = () => {
-  const handleRegisterFunc = (e) => {
-    e.preventDefault();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const handleRegisterFunc = (data) => {
+    // e.preventDefault();
+    console.log(data);
   };
   return (
     <div className="container mx-auto min-h-[80vh] flex justify-center items-center">
@@ -22,20 +30,53 @@ const Register = () => {
           Register you account
         </h2>
         <form
-          onSubmit={handleRegisterFunc}
+          onSubmit={handleSubmit(handleRegisterFunc)}
           className="flex w-96 flex-col gap-4"
         >
-          <TextField isRequired name="email" type="email">
-            <Label>Email</Label>
-            <Input className={"rounded-md"} placeholder="john@example.com" />
+          <TextField isRequired name="name" type="text">
+            <Label>Name</Label>
+            <Input
+              {...register("name", { required: true })}
+              className={"rounded-md"}
+              placeholder="Jhon Doe"
+            />
             <FieldError />
           </TextField>
-          <TextField isRequired minLength={8} name="password" type="password">
+          <TextField isRequired name="image" type="text">
+            <Label>Image URL</Label>
+            <Input
+              {...register("image", {
+                required: "Image URL field is required",
+              })}
+              className={"rounded-md"}
+              placeholder="Your Image URL"
+            />
+            <FieldError />
+          </TextField>
+          <TextField isRequired name="email" type="email">
+            <Label>Email</Label>
+            <Input
+              {...register("email", { required: "Email field is required" })}
+              className={"rounded-md"}
+              placeholder="john@example.com"
+            />
+            <FieldError />
+            {/* {errors.email && <p>{errors.email.message}</p>} */}
+          </TextField>
+          <TextField isRequired type="password">
             <Label>Password</Label>
-            <Input className={"rounded-md"} placeholder="Enter your password" />
+            <Input
+              {...register("password", {
+                required: "Password is required",
+                minLength: 8,
+              })}
+              className={"rounded-md"}
+              placeholder="Enter your password"
+            />
             <Description>
               Must be at least 8 characters with 1 uppercase and 1 number
             </Description>
+            {/* {errors.password && <p>{errors.password.message}</p>} */}
             <FieldError />
           </TextField>
           <Button className="w-full rounded-md" type="submit">
@@ -48,20 +89,7 @@ const Register = () => {
           <span>Or Signin With</span>
           <Separator className="flex-1" orientation="horizontal" />
         </div>
-        <div className="flex w-full flex-col gap-3 mt-4">
-          <Button className="w-full rounded-md" variant="tertiary">
-            <Icon icon="devicon:google" />
-            Sign in with Google
-          </Button>
-          <Button className="w-full rounded-md" variant="tertiary">
-            <Icon icon="mdi:github" />
-            Sign in with GitHub
-          </Button>
-          <Button className="w-full rounded-md" variant="tertiary">
-            <Icon icon="ion:logo-apple" />
-            Sign in with Apple
-          </Button>
-        </div>
+        <RightSideBar />
         <p className="mt-4">
           Already have an account?{" "}
           <Link className="text-blue-400" href={"/login"}>

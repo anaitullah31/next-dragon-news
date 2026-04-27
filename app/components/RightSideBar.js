@@ -2,7 +2,7 @@ import { Button } from "@heroui/react";
 import { Icon } from "@iconify/react";
 const RightSideBar = () => {
   return (
-    <div className="flex w-full max-w-xs flex-col gap-3 mt-4">
+    <div className="flex w-full flex-col gap-3 mt-4">
       <Button className="w-full rounded-md" variant="tertiary">
         <Icon icon="devicon:google" />
         Sign in with Google
@@ -11,10 +11,10 @@ const RightSideBar = () => {
         <Icon icon="mdi:github" />
         Sign in with GitHub
       </Button>
-      <Button className="w-full rounded-md" variant="tertiary">
+      {/* <Button className="w-full rounded-md" variant="tertiary">
         <Icon icon="ion:logo-apple" />
         Sign in with Apple
-      </Button>
+      </Button> */}
     </div>
   );
 };

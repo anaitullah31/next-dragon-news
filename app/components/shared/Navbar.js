@@ -27,9 +27,9 @@ export default function Navbar() {
               height={32}
               className="h-8 w-8 rounded-full object-cover"
             />
-            <button className="bg-zinc-800 rounded-md px-8 py-2 text-sm font-semibold text-white hover:bg-zinc-900 cursor-pointer">
+            <Link href={"/login"} className="bg-zinc-800 rounded-md px-8 py-2 text-sm font-semibold text-white hover:bg-zinc-900 cursor-pointer">
               Login
-            </button>
+            </Link>
           </div>
         </div>
       </div>

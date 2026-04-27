@@ -1,7 +1,7 @@
 import React from "react";
 
 const Career = () => {
-  return <div>Career</div>;
+  return <div className="container mx-auto">Career</div>;
 };
 
 export default Career;
