@@ -1,5 +1,6 @@
 "use client";
 import RightSideBar from "@/app/components/RightSideBar";
+import { authClient } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -19,10 +20,20 @@ const Register = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const handleRegisterFunc = (data) => {
+
+  const handleRegisterFunc = async (data) => {
     // e.preventDefault();
-    console.log(data);
+    const { data: response, error } = await authClient.signUp.email({
+      name: data.name, // required
+      email: data.email, // required
+      password: data.password, // required
+      image: data.image,
+      callbackURL: "/",
+    });
+    console.log(response, "DATA");
+    console.log(error, "ERROR");
   };
+
   return (
     <div className="container mx-auto min-h-[80vh] flex justify-center items-center">
       <div className="border p-12 rounded-md">

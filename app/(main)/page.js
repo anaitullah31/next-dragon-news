@@ -48,7 +48,7 @@ export default function Home() {
       </div>
 
       <div className="col-span-2">
-        <h2 className="text-2xl font-semibold">Social Icons</h2>
+        <h2 className="text-2xl font-semibold">Social Login</h2>
         <RightSideBar />
       </div>
     </div>
