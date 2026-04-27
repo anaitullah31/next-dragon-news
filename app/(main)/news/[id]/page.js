@@ -21,7 +21,6 @@ const NewsDetails = async ({ params }) => {
             height={600}
             className="h-90 w-full rounded-md object-cover"
           />
-
           <h1 className="mt-6 text-2xl font-bold leading-9 text-gray-800">
             {newsDetails.title}
           </h1>
